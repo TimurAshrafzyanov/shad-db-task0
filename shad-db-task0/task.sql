@@ -220,7 +220,7 @@ CREATE OR REPLACE FUNCTION shad_db.validate_graph() RETURNS VOID AS $$
             FROM shad_db.employees
             WHERE director_id = -1
         );
-        IF roots_count != 1
+        IF roots_count > 1
         THEN 
             RAISE EXCEPTION 'Only one root is possible, got %', roots_count;
         END IF;
